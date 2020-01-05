@@ -24,8 +24,8 @@ app = Flask(__name__)
 
 path = Path("path")
 classes = ['gate', 'lib','tp','ub']
-data2 = ImageDataBunch.single_from_classes(path, classes, tfms=get_transforms(), size=224).normalize(imagenet_stats)
-learn = create_cnn(data2, models.resnet34)
+data2 = ImageDataBunch.single_from_classes(path, classes, ds_tfms=get_transforms(), size=224).normalize(imagenet_stats)
+learn = cnn_learner(data2, models.resnet34)
 learn.load('stage-1')
 
 
